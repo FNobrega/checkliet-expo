@@ -35,13 +35,21 @@ export default function App() {
   
   return (
     <View style={styles.streen}>
-      <Button title="Add new item" onPress={() => setIsAddMode(true)} />
+      <View style={styles.head}> 
+        <View style={styles.button}>
+          <Button title="CheckList ✓" style={styles.titleText}/>
+        </View>
+        <View style={styles.button}>
+          <Button title="+" onPress={() => setIsAddMode(true)} />
+        </View>
+      </View>
       <ItemInput 
         visible={isAddMode} 
         onAddItem={addItemHandler} 
         onCancel={cancelItemAddInitialHandler}
       />
       <FlatList 
+        style={styles.list}
         data={courseItems} 
         renderItem={itemData =><GoalItem id={itemData.item.id} onDelete={removeItemHandler} title={itemData.item.value} />}
       />
@@ -51,7 +59,26 @@ export default function App() {
 
 const styles = StyleSheet.create({
   streen:{
-   padding:50, 
+    backgroundColor: '#ececec',
+    height:'100%',
+  },
+  head:{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    backgroundColor: '#fff',
+    paddingTop:25,
+    paddingBottom:10,
+    paddingHorizontal:10,
+
+  },
+  list:{
+    padding:30,
+  },
+  titleText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#ffff',
   },
   
   

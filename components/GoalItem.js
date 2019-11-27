@@ -14,13 +14,22 @@ const GoalItem = props => {
 
 const styles = StyleSheet.create({
     listItem:{
-        padding:10,
-        marginVertical:10,
-    
-        backgroundColor: '#ccc',
-        borderColor:'black',
-        borderWidth:1,
+        padding:20,
+        //marginVertical:10,
+        margin:10,
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+
+        elevation: 5,
+        backgroundColor: '#fff',
+        fontSize: 18,
       },
 });
 
 export default GoalItem;
+

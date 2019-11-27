@@ -42,7 +42,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
       },
       input:{
-        borderColor: 'black', 
+        backgroundColor: '#ececec',
+        borderColor: '#A9A9A9', 
         borderWidth: 1, 
         padding:10, 
         width: '80%',
