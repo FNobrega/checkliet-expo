@@ -2,20 +2,19 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import moment from "moment";
 
-const GoalItem = props => {
+const GoalItemComp = props => {
 
     return (
         <TouchableOpacity onPress={props.onDelete.bind(this, props.id)}>
-            { props.thu && 
-                <View style={styles.listItem} >
-                    <Text>{props.title}</Text>
-                </View>}
+            <View style={styles.listItem} >
+                <Text>{props.title}</Text>
+            </View>
         </TouchableOpacity>
+        
         
     );
 
 };
-
 
 
 const styles = StyleSheet.create({
@@ -23,6 +22,7 @@ const styles = StyleSheet.create({
         padding:20,
         //marginVertical:10,
         margin:10,
+        paddingBottom:10,
         shadowColor: '#000',
         shadowOffset: {
             width: 0,
@@ -37,4 +37,4 @@ const styles = StyleSheet.create({
       },
 });
 
-export default GoalItem;
+export default GoalItemComp;

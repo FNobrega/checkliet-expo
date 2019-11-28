@@ -1,3 +1,4 @@
+import moment from "moment";
 import React, {Component, useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Modal, Switch, Text } from 'react-native';
 
@@ -17,63 +18,77 @@ const ItemInput = props => {
         isSaturday,
         isSunday,
         isRain,
-        isSunny
+        isSunny,
+        isToday,
           );
       setEnteredItem('');
+      todayHandler();
     };
 
     const [isMonday, setIsMonday] = useState(false);
     const mondayHandler = () =>{
       if(isMonday) {setIsMonday(false);}
-      else {setIsMonday(true);}
+      else {setIsMonday(true);
+            todayHandler;}
     };
 
     const [isTuesday, setIsTuesday] = useState(false);
     const tuesdayHandler = () =>{
       if(isTuesday) {setIsTuesday(false);}
-      else {setIsTuesday(true);}
+      else {setIsTuesday(true);
+        todayHandler();}
     };
 
     const [isWednesday, setIsWednesday] = useState(false);
     const wednesdayHandler = () =>{
       if(isWednesday) {setIsWednesday(false);}
-      else {setIsWednesday(true);}
+      else {setIsWednesday(true);
+        todayHandler();}
     };
 
     const [isThursday, setIsThursday] = useState(false);
     const thursdayHandler = () =>{
-      if(isThursday) {setIsThursday(false);}
-      else {setIsThursday(true);}
+      if(isThursday) {setIsThursday(false);
+        todayHandler();}
+      else {setIsThursday(true);
+        todayHandler();}
     };
 
     const [isFriday, setIsFriday] = useState(false);
     const fridayHandler = () =>{
       if(isFriday) {setIsFriday(false);}
-      else {setIsFriday(true);}
+      else {setIsFriday(true);
+        todayHandler();}
     };
 
     const [isSaturday, setIsSaturday] = useState(false);
     const saturdayHandler = () =>{
       if(isSaturday) {setIsSaturday(false);}
-      else {setIsSaturday(true);}
+      else {setIsSaturday(true);
+        todayHandler();}
     };
 
     const [isSunday, setIsSunday] = useState(false);
     const sundayHandler = () =>{
       if(isSunday) {setIsSunday(false);}
-      else {setIsSunday(true);}
+      else {setIsSunday(true);
+        todayHandler();}
     };
 
     const [isRain, setIsRain] = useState(false);
     const rainHandler = () =>{
-      if(isRain) {setIsRain(false);}
-      else {setIsRain(true);}
+      if(isRain) {setIsRain(false);
+        todayHandler();}
+      else {setIsRain(true);
+        todayHandler();}
     };
 
     const [isSunny, setIsSunny] = useState(false);
     const sunnyHandler = () =>{
-      if(isSunny) {setIsSunny(false);}
-      else {setIsSunny(true);}
+      if(isSunny) {setIsSunny(false);
+        todayHandler();}
+      else {setIsSunny(true);
+        todayHandler();}
     };
 
     const [isAll, setIsAll] = useState(false);
@@ -87,6 +102,7 @@ const ItemInput = props => {
         setIsSaturday(false);
         setIsSunday(false);
         setIsAll(false);
+        todayHandler();
       }
       else {
         setIsMonday(true);
@@ -97,12 +113,31 @@ const ItemInput = props => {
         setIsSaturday(true);
         setIsSunday(true);
         setIsAll(true);
+        todayHandler();
       }
+
+      
     };
+
+    const [isToday, setIsToday] = useState(false);
+      const todayHandler = () =>{
+        const day = moment().weekday();
+
+        if(day==1 && isMonday){setIsToday(true);}
+        else if(day==2 && props.tue){setIsToday(true); }
+        else if(day==3 && props.wed){setIsToday(true); }
+        else if(day==4 && isThursday){setIsToday(true);}
+        else if(day==5 && props.fri){setIsToday(true); }
+        else if(day==6 && props.sat){setIsToday(true); }
+        else if(day==7 && props.sun){setIsToday(true); }
+        else {setIsToday(false); }
+        return true;
+      };
+
 
 
     return(
-      <Modal visible = {props.visible} animationType='slide'>
+      <Modal visible = {props.visible} animationType='slide' >
         <View style={styles.inputCountainer}>
           <TextInput 
             placeholder="Novo item" 
@@ -111,11 +146,11 @@ const ItemInput = props => {
             value={enteredItem} 
           />
           <View style={styles.buttonCountainer}> 
-            <View style={styles.button}>
-              <Button title="CANCEL" color="red" onPress = {props.onCancel} />
+            <View  backgroundColor= "#ff6666" style={styles.button }>
+              <Button title="Cancela" color="white"  fontWeight='bold'  onPress = {props.onCancel} />
             </View>
-            <View style={styles.button}>
-              <Button title="ADD" onPress = {addItemHandler}/>
+            <View  backgroundColor= "#4CAF50" style={styles.button }> 
+              <Button title="Adiciona" color="white" onPress = {addItemHandler}/>
             </View>
           </View>
           <View style={styles.filterBlock}>
@@ -175,7 +210,7 @@ const ItemInput = props => {
               />
             </View>
             <View style={styles.filterCountainer}> 
-              <Text>Dia de chuva </Text>
+              <Text>Chuva </Text>
               <Switch 
                 value={isRain}
                 onValueChange={rainHandler}
@@ -191,7 +226,7 @@ const ItemInput = props => {
               />
             </View>
             <View style={styles.filterCountainer}> 
-              <Text>Todos os Dias </Text>
+              <Text>Todos </Text>
               <Switch 
                 value={isAll}
                 onValueChange={allHandler}
@@ -213,17 +248,19 @@ const styles = StyleSheet.create({
         alignItems: 'center',
       },
       input:{
-        backgroundColor: '#ececec',
+        //backgroundColor: '#ececec',
         borderColor: '#A9A9A9', 
         borderWidth: 1, 
         padding:10, 
         width: '80%',
         marginBottom: 10,
+        height: 50,
       },
       buttonCountainer:{
+        padding: 10,
         flexDirection: 'row',
-        justifyContent: 'space-around',
-        width: '60%',
+        justifyContent: 'space-between',
+        width: '75%',
       },
       button:{
         width:'40%',
@@ -233,6 +270,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         //alignItems: 'center',
+        width:'40%'
       },
       filterBlock:{
         flexDirection: 'row',
