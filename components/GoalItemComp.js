@@ -7,7 +7,7 @@ const GoalItemComp = props => {
     return (
         <TouchableOpacity onPress={props.onDelete.bind(this, props.id)}>
             <View style={styles.listItem} >
-                <Text>{props.title}</Text>
+                <Text style={styles.textSection}>{props.title}</Text>
             </View>
         </TouchableOpacity>
         
@@ -40,4 +40,5 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
       },
 });
+
 export default GoalItemComp;
