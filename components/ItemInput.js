@@ -146,7 +146,8 @@ const ItemInput = props => {
             onChangeText={itemImputHandler}
             value={enteredItem} 
           />
-          <View style={styles.buttonCountainer}> 
+          <View style={styles.buttonCountainer}>
+            <View> 
               <Button title="Cancela" color="#ff6666"  fontWeight='bold'  onPress = {props.onCancel} />
             </View>
             <View style={styles.button }> 

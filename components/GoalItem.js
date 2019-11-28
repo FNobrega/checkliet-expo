@@ -34,7 +34,7 @@ const GoalItem = props => {
                 </View>}
             { (props.sun && day%7==0) && 
                 <View style={styles.listItem} >
-                    <Text style={styles.textSection}>{props.title}</Text>
+                    <Text >{props.title}</Text>
                 </View>}
     
         </TouchableOpacity>
