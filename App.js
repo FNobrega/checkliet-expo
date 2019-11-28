@@ -8,6 +8,7 @@ import {
 
 import GoalItem from './components/GoalItem';
 import ItemInput from './components/ItemInput';
+import { isConfigurationAvailable } from 'expo/build/AR';
 
 export default function App() {
   const [enteredItem, setEnteredItem] = useState('');
@@ -16,12 +17,40 @@ export default function App() {
 
   const [isAddMode, setIsAddMode] = useState(false);
   
-  const addItemHandler = enteredItem => {
+  const addItemHandler = (
+    enteredItem, 
+    isMonday, 
+    isTuesday, 
+    isWednesday, 
+    isFriday, 
+    isSaturday,
+    isSunday,
+    isRain,
+    isSunny
+    ) => {
     setCourseItems( currentItems => [
       ...currentItems, 
-      { id: Math.random().toString(), key: Math.random().toString(), value: enteredItem}]);
+      { id: Math.random().toString(), 
+        key: Math.random().toString(), 
+        value: enteredItem,
+        mon:isMonday,
+        tue:isTuesday, 
+        wed:isWednesday, 
+        fri:isFriday,
+        sat:isSaturday,
+        sun:isSunday,
+        rain:isRain,
+        Sunny:isSunny,
+      }]);
       setIsAddMode(false);
   };
+  // const changeMonday = itemId => {
+  //   setCourseItems( currentItems => {
+  //     if (item.id==itemId) item.monday = true;
+  //     return currentItems;
+
+  //   })
+  // }
 
   const removeItemHandler = itemId => {
     setCourseItems( currentItems => {
@@ -48,10 +77,17 @@ export default function App() {
         onAddItem={addItemHandler} 
         onCancel={cancelItemAddInitialHandler}
       />
+      
       <FlatList 
         style={styles.list}
         data={courseItems} 
-        renderItem={itemData =><GoalItem id={itemData.item.id} onDelete={removeItemHandler} title={itemData.item.value} />}
+        renderItem={itemData =><GoalItem id={itemData.item.id} onDelete={removeItemHandler} title={itemData.item.value} 
+        sun={itemData.item.sun}
+        mon={itemData.item.mon}
+        tue={itemData.item.tue}
+        wed={itemData.item.wed}
+        thu={itemData.item.thu}
+        />}
       />
     </View>
   );

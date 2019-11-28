@@ -2,11 +2,19 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 const GoalItem = props => {
+    const returnDay = () =>{
+        console.log("aqui!!");
+        console.log(new Date());
+        return (new Date());
+        //props.title
+      };
     return (
         <TouchableOpacity onPress={props.onDelete.bind(this, props.id)}>
-            <View style={styles.listItem} >
-                <Text>{props.title}</Text>
-            </View>
+            {returnDay && 
+                <View style={styles.listItem} >
+                    <Text>{props.title}</Text>
+                </View>
+            }
         </TouchableOpacity>
     );
 
@@ -32,4 +40,3 @@ const styles = StyleSheet.create({
 });
 
 export default GoalItem;
-
