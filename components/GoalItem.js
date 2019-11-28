@@ -8,7 +8,7 @@ const GoalItem = props => {
         <TouchableOpacity onPress={props.onDelete.bind(this, props.id)}>
             { props.thu && 
                 <View style={styles.listItem} >
-                    <Text>{props.title}</Text>
+                    <Text style={styles.textSection}>{props.title}</Text>
                 </View>}
         </TouchableOpacity>
         
@@ -33,7 +33,12 @@ const styles = StyleSheet.create({
 
         elevation: 5,
         backgroundColor: '#fff',
-        fontSize: 18,
+        
+      },
+      textSection: {
+        backgroundColor: '#fff',
+        fontSize: 20,
+        fontWeight: 'bold',
       },
 });
 

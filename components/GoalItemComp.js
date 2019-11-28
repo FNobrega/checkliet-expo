@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
         padding:20,
         //marginVertical:10,
         margin:10,
-        paddingBottom:10,
         shadowColor: '#000',
         shadowOffset: {
             width: 0,
@@ -33,8 +32,12 @@ const styles = StyleSheet.create({
 
         elevation: 5,
         backgroundColor: '#fff',
-        fontSize: 18,
+        
+      },
+      textSection: {
+        backgroundColor: '#fff',
+        fontSize: 20,
+        fontWeight: 'bold',
       },
 });
-
 export default GoalItemComp;

@@ -37,6 +37,7 @@ export default function App() {
     isMonday, 
     isTuesday, 
     isWednesday, 
+    isThursday,
     isFriday, 
     isSaturday,
     isSunday,
@@ -52,6 +53,7 @@ export default function App() {
         mon:isMonday,
         tue:isTuesday, 
         wed:isWednesday, 
+        thu:isThursday,
         fri:isFriday,
         sat:isSaturday,
         sun:isSunday,
@@ -161,6 +163,9 @@ const styles = StyleSheet.create({
   },
   texto: {
     padding: 15,
+    //fontSize:18,
+    color:'#000',
+    fontWeight: 'bold',
   },
   filterCountainer:{
     padding:15,
