@@ -81,8 +81,8 @@ export default function App() {
         <View style={styles.viewHeader}>
           <Text style={styles.titleText}>CheckList ✓</Text>
         </View>
-        <View backgroundColor= "#4CAF50"  width="10%">
-          <Button  fontSize='22' color='white' size='22' title="+" onPress={() => setIsAddMode(true)} />
+        <View width="10%">
+          <Button  fontSize='22' color='4CAF50' size='22' title="+" onPress={() => setIsAddMode(true)} />
         </View>
       </View>
         <View style={styles.filterCountainer}> 

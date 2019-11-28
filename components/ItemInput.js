@@ -147,11 +147,10 @@ const ItemInput = props => {
             value={enteredItem} 
           />
           <View style={styles.buttonCountainer}> 
-            <View  backgroundColor= "#ff6666" style={styles.button }>
-              <Button title="Cancela" color="white"  fontWeight='bold'  onPress = {props.onCancel} />
+              <Button title="Cancela" color="#ff6666"  fontWeight='bold'  onPress = {props.onCancel} />
             </View>
-            <View  backgroundColor= "#4CAF50" style={styles.button }> 
-              <Button title="Adiciona" color="white" onPress = {addItemHandler}/>
+            <View style={styles.button }> 
+              <Button title="Adiciona" color="#4CAF50" onPress = {addItemHandler}/>
             </View>
           </View>
           <View style={styles.filterBlock}>
